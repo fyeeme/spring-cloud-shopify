@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.12'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+ext {
+    set('springCloudVersion', "2021.0.7")
+    set('springCloudAlibabaVersion', "2021.0.5.0")
+}
+
+repositories {
+    mavenCentral()
+}
+
+// 子项目的通用配置
+subprojects {
+    // 使用插件
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    // 项目的默认名称和版本
+    group = "com.example"
+    version = '0.0.1-SNAPSHOT'
+
+    // 指定JDK版本
+    sourceCompatibility = '17'
+    jar.enabled = true
+
+    // 指定仓库地址
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+
+        // 导入SpringBoot和SpringCloud依赖Bom
+        imports {
+//            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        }
+
+    }
+}
