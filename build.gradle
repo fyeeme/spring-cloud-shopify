@@ -5,6 +5,7 @@ plugins {
 }
 
 ext {
+    set('springBootVersion', "3.1.0")
     set('springCloudVersion', "2022.0.3")
     set('springCloudAlibabaVersion', "2022.0.0.0-RC2")
 }
@@ -33,11 +34,14 @@ subprojects {
         mavenCentral()
     }
 
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    }
     dependencyManagement {
 
         // 导入SpringBoot和SpringCloud依赖Bom
         imports {
-//            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
             mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
         }

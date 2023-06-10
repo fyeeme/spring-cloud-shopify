@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: user-service
   cloud:
     nacos:
       config:
@@ -11,6 +9,3 @@ spring:
   config:
     import:
       - optional:nacos:user-service-dev.yml?refresh=true  # 监听 DEFAULT_GROUP:test.yml
-  profiles:
-    active:
-      - dev
