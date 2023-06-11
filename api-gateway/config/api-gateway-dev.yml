@@ -1,0 +1,44 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active:
+      - dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api-users/**
+          filters:
+            - StripPrefix=1 #删除 nacos前缀
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api-orders/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    web: debug
+    com:
+      alibaba:
+        cloud: debug
+    org:
+      springframework:
+        cloud: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

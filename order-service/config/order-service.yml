@@ -1,0 +1,28 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+
+logging:
+  level:
+    web: debug
+    com:
+      alibaba:
+        cloud: debug
+    org:
+      springframework:
+        cloud: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
