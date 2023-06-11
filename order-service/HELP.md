@@ -14,7 +14,7 @@ The following guides illustrate how to use some features concretely:
 * [Using Spring Cloud Gateway](https://github.com/spring-cloud-samples/spring-cloud-gateway-sample)
 
 ### Additional Links
-These additional references should also help you:
+Feign PathVariable annotation was empty on param 0:
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+* [Solution](https://blog.csdn.net/qq_38425719/article/details/104558938)
 

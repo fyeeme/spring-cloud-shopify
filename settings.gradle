@@ -1,5 +1,6 @@
 rootProject.name = 'spring-cloud-alibaba'
 include 'api-gateway'
 include 'user-service'
+include 'user-service-api'
 include 'order-service'
 

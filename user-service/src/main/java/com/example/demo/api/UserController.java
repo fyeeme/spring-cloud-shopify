@@ -1,19 +1,19 @@
-package com.example.demo;
+package com.example.demo.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.demo.api.UserApi;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OrderController {
+public class UserController implements UserApi {
 
-    @GetMapping("/echo/{string}")
+    @Override
     public String echo(@PathVariable String string) {
         return "hello Nacos Discovery " + string;
     }
 
-    @GetMapping("/divide")
+    @Override
     public String divide(@RequestParam Integer a, @RequestParam Integer b) {
         return String.valueOf(a / b);
     }

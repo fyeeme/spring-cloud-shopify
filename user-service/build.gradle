@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	implementation project(':user-service-api')
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
 	implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
