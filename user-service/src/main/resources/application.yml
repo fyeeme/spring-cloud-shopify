@@ -1,16 +1,6 @@
 spring:
   application:
     name: user-service
-  cloud:
-    nacos:
-      config:
-        group: DEFAULT_GROUP
-        server-addr: 127.0.0.1:8848
-      username: nacos
-      password: nacos
-  config:
-    import:
-      - optional:nacos:user-service-dev.yml?refresh=true  # 监听 DEFAULT_GROUP:test.yml
   profiles:
     active:
       - dev

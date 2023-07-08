@@ -10,16 +10,26 @@ spring:
         server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
+    #sentinel控制台
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+
+  #开启sentinel的支持
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config.default.loggerLevel: FULL
 
 logging:
   level:
     web: debug
     com:
-      alibaba:
-        cloud: debug
+      example.demo.api.UserApi: debug
+      alibaba.cloud: debug
     org:
-      springframework:
-        cloud: debug
+      springframework.cloud: debug
 
 management:
   endpoints:
