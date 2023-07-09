@@ -3,7 +3,8 @@ server:
 
 logging:
   level:
-    org.springframework.security: trace
+    web: DEBUG
+    org.springframework.security: DEBUG
 
 #  OAuth2AuthorizationServerProperties.java
 spring:
@@ -19,11 +20,12 @@ spring:
               authorization-grant-types:
                 - "authorization_code"
               redirect-uris:
-                - "http://127.0.0.1:4200" # 客户端地址
-                - "https://oauthdebugger.com/debug"
+                - "http://127.0.0.1:4200"
               scopes:
                 - "openid"
                 - "profile"
+            require-authorization-consent: true
+            require-proof-key: true
           messaging-client:
             registration:
               client-id: "messaging-client"
@@ -33,7 +35,7 @@ spring:
               authorization-grant-types:
                 - "authorization_code"
                 - "refresh_token"
-#                - "client_credentials"
+                - "client_credentials"
               redirect-uris:
                 - "http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc"
                 - "http://127.0.0.1:8080/authorized"
@@ -46,4 +48,14 @@ spring:
                 - "message.read"
                 - "message.write"
             require-authorization-consent: true
-            require-proof-key: true
+  flyway:
+    out-of-order: true
+    baseline-on-migrate: true
+    validate-on-migrate: false
+    locations:
+      - classpath:db/migrations
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/cloud_app_authorization?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=UTF8
+    username: root
+    password: root
+
