@@ -5,3 +5,6 @@ include 'user-service-api'
 include 'order-service'
 include 'app-authorization-server'
 include 'app-resource-server'
+include 'user-service-console-api'
+include 'lang'
+

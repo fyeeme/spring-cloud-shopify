@@ -14,9 +14,11 @@
             <option value="$PROJECT_DIR$/api-gateway" />
             <option value="$PROJECT_DIR$/app-authorization-server" />
             <option value="$PROJECT_DIR$/app-resource-server" />
+            <option value="$PROJECT_DIR$/lang" />
             <option value="$PROJECT_DIR$/order-service" />
             <option value="$PROJECT_DIR$/user-service" />
             <option value="$PROJECT_DIR$/user-service-api" />
+            <option value="$PROJECT_DIR$/user-service-console-api" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -4,3 +4,7 @@ spring:
   profiles:
     active:
       - dev
+  datasource:
+    dbcp2:
+      abandoned-usage-tracking:
+

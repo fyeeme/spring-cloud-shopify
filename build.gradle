@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.1.1'
-    id 'io.spring.dependency-management' version '1.1.0'
+    id 'org.springframework.boot' version '3.1.2'
+    id 'io.spring.dependency-management' version '1.1.2'
 }
 
 ext {
-    set('springBootVersion', "3.1.1")
-    set('springCloudVersion', "2022.0.3")
-    set('springCloudAlibabaVersion', "2022.0.0.0-RC2")
+    set('springBootVersion', "3.1.2")
+    set('springCloudVersion', "2022.0.4")
+    set('springCloudAlibabaVersion', "2022.0.0.0")
 }
 
 repositories {
@@ -29,12 +29,21 @@ subprojects {
     sourceCompatibility = '17'
     jar.enabled = true
 
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+
     // 指定仓库地址
     repositories {
         mavenCentral()
     }
 
     dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
     }
     dependencyManagement {
