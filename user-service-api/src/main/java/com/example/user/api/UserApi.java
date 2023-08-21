@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "user-service", fallbackFactory = UserFallbackFactory.class)
-@RequestMapping("users")
+@FeignClient(value = "user-service", path = "/users", fallbackFactory = UserFallbackFactory.class)
 public interface UserApi {
 
     /**
@@ -30,7 +29,7 @@ public interface UserApi {
      * @param requestDto
      * @return
      */
-    @PostMapping("/update")
+    @PostMapping("/{id}")
     Long update(@PathVariable Long id, @RequestBody UserRequestDto requestDto);
 
     /**

@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "user-service-console", fallbackFactory = UserFallbackFactory.class)
-@RequestMapping("/console/users")
+@FeignClient(value = "user-service-console", path = "/console/users",fallbackFactory = UserFallbackFactory.class)
 public interface UserConsoleApi {
     /**
      * 新增用户

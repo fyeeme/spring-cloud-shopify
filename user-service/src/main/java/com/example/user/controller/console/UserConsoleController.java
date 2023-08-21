@@ -13,6 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/console/users")
 public class UserConsoleController  implements UserConsoleApi {
     private final UserManager userManager;
 
@@ -35,7 +36,6 @@ public class UserConsoleController  implements UserConsoleApi {
      * @param requestDto
      * @return
      */
-    @PutMapping("/{id}")
     public Long update(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
         Long userId = userManager.update(id, requestDto);
         return userId;
@@ -47,7 +47,6 @@ public class UserConsoleController  implements UserConsoleApi {
      * @param id
      * @return
      */
-    @GetMapping("/{id}")
     public UserResponseDto findById(@PathVariable Long id) {
         UserResponseDto userResponseDto = userManager.findById(id);
         return userResponseDto;
@@ -59,7 +58,6 @@ public class UserConsoleController  implements UserConsoleApi {
      * @param status
      * @return
      */
-    @GetMapping("/user/{userId}/status/{status}")
     public UserRequestDto findByUserIdAndStatus(@PathVariable Long userId, @PathVariable Integer status){
        return  userManager.findByUserIdAndStatus(userId, status);
     }
@@ -68,21 +66,11 @@ public class UserConsoleController  implements UserConsoleApi {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
     public Boolean deleteById(@PathVariable long id) {
         userManager.deleteByid(id);
         return true;
     }
 
-    @PostMapping("/search")
-    public Page<UserResponseDto> findAll(@RequestBody UserRequestDto requestDto){
-        return null;
-    }
-
-    @PostMapping("/list")
-    public List<UserResponseDto> findList(@RequestBody UserRequestDto requestDto){
-        return null;
-    }
 
     @Override
     public Boolean deleteAllById(List<Long> ids) {
